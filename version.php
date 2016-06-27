@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2016220622;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2016270610;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2015041700;        // Requires this Moodle version (Date: YYYYMMDDXX This is the release version for Moodle 2.9)
 $plugin->component = 'block_teleconference_noticeboard'; // Full name of the plugin (used for diagnostics)

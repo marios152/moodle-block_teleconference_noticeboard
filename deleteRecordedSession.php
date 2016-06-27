@@ -59,7 +59,7 @@ if ($recordedSessionForm->is_cancelled()){ //form cancelled
 }else if( $data ){ // when form is submitted  
 	$sessionArr=[];
 	$sessionArr['id']= $data->recordedSessionId;
-	$sessionArr['userid']= $data->userId; //test
+	$sessionArr['userid']= $data->userId;
 	$sessionArr['courseid']= $data->courseid;
 	$sessionArr['recorded_teleconf_title']= $data->session_title; 
     $sessionArr['recorded_teleconf_url']= $data->link;

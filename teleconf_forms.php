@@ -171,6 +171,7 @@ class teleconf_delete_session_info extends moodleform{
 		$sesDate  = $this->_customdata['sesDate'];
 		$sesNum	  = $this->_customdata['sesNumber'];
 		$sesPass  = $this->_customdata['sesPassword'];
+		$sesUserID  = $this->_customdata['sesUserId'];
 		$mform=$this->_form;
 		$mform->addElement('header', 'general', get_string('general'));
 		
@@ -198,6 +199,10 @@ class teleconf_delete_session_info extends moodleform{
 		$mform->addElement('text', 'teleconfPass', get_string('teleconfPass','block_teleconference_noticeboard'),$attributesDelete);
 		$mform->setType('teleconfPass',PARAM_NOTAGS);	
 		$mform->setDefault('teleconfPass', $sesPass);
+		
+		$mform->addElement('hidden', 'sesUserID');
+        $mform->setType('sesUserID', PARAM_INT);
+        $mform->setDefault('sesUserID', $sesUserID);
 	
         $mform->addElement('hidden', 'courseid');
         $mform->setType('courseid', PARAM_INT);
@@ -223,11 +228,11 @@ class teleconf_add_recorded_session extends moodleform{
 		$mform->addElement('header', 'general', get_string('general'));
 		
 		$attributes='size="70"';
-		$mform->addElement('text', 'session_title', 'Session title',$attributes);
+		$mform->addElement('text', 'session_title', get_string('sessionTitle','block_teleconference_noticeboard'),$attributes);
 		$mform->setType('session_title',PARAM_NOTAGS);
 		$mform->addRule('session_title',get_string('requiredError','block_teleconference_noticeboard'),'required');
 		
-		$mform->addElement('text', 'link', 'Link',$attributes);
+		$mform->addElement('text', 'link', get_string('link','block_teleconference_noticeboard'),$attributes);
 		$mform->setType('link',PARAM_NOTAGS);	
 		$mform->addRule('link',get_string('requiredError','block_teleconference_noticeboard'),'required');
 	
@@ -264,12 +269,12 @@ class teleconf_edit_recorded_session extends moodleform{
 		$mform=$this->_form;
 		$mform->addElement('header', 'general', get_string('general'));
 		$attributes='size="70"';
-		$mform->addElement('text', 'session_title', 'Session title',$attributes);
+		$mform->addElement('text', 'session_title', get_string('sessionTitle','block_teleconference_noticeboard'),$attributes);
 		$mform->setType('session_title',PARAM_NOTAGS);
 		$mform->addRule('session_title',get_string('requiredError','block_teleconference_noticeboard'),'required');
 		$mform->setDefault('session_title', $sesTitle);
 		 
-		$mform->addElement('text', 'link', 'Link',$attributes);
+		$mform->addElement('text', 'link', get_string('link','block_teleconference_noticeboard'),$attributes);
 		$mform->setType('link',PARAM_NOTAGS);
 		$mform->addRule('link',get_string('requiredError','block_teleconference_noticeboard'),'required');
 		$mform->setDefault('link', $sesUrl);
@@ -308,19 +313,24 @@ class teleconf_delete_recorded_session extends moodleform{
 		$sesTitle = $this->_customdata['sesTitle'];
 		$sesUrl   = $this->_customdata['sesUrl'];
 		$sesId	  = $this->_customdata['sesId'];
+		$sesUserId	= $this->_customdata['sesUserId'];
 		
 		$mform=$this->_form;
 		$mform->addElement('header', 'general', get_string('general')); 
 		
 		$attributesDelete='size="70", disabled';
 		
-		$mform->addElement('text', 'session_title', 'Session title',$attributesDelete);
+		$mform->addElement('text', 'session_title', get_string('sessionTitle','block_teleconference_noticeboard'),$attributesDelete);
 		$mform->setType('session_title',PARAM_NOTAGS);
 		$mform->setDefault('session_title', $sesTitle);
 		      
-		$mform->addElement('text', 'link', 'Link',$attributesDelete);
+		$mform->addElement('text', 'link', get_string('link','block_teleconference_noticeboard'),$attributesDelete);
 		$mform->setType('link',PARAM_NOTAGS);	
 		$mform->setDefault('link', $sesUrl);
+		
+		$mform->addElement('hidden', 'userId');
+        $mform->setType('userId', PARAM_INT);
+        $mform->setDefault('userId', $sesUserId);
 		      
         $mform->addElement('hidden', 'courseid');
         $mform->setType('courseid', PARAM_INT);

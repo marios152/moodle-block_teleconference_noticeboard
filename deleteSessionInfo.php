@@ -51,7 +51,8 @@ $sesTime=$get_rec->teleconf_time;
 $sesDate=$get_rec->teleconf_date;
 $sesNumber=$get_rec->teleconf_number;
 $sesPassword=$get_rec->teleconf_pass;
-$sessionForm = new teleconf_delete_session_info(NULL, array('sesTitle'=>$sesTitle,'sesUrl'=>$sesUrl,'sesId'=>$sesId,'sesTime'=>$sesTime,'sesDate'=>$sesDate,'sesNumber'=>$sesNumber,'sesPassword'=>$sesPassword));
+$sesUserId=$get_rec->userid;
+$sessionForm = new teleconf_delete_session_info(NULL, array('sesTitle'=>$sesTitle,'sesUrl'=>$sesUrl,'sesId'=>$sesId,'sesTime'=>$sesTime,'sesDate'=>$sesDate,'sesNumber'=>$sesNumber,'sesPassword'=>$sesPassword,'sesUserId'=>$sesUserId));
 $data = $sessionForm->get_data(); // form submitted
 
 if ($sessionForm->is_cancelled()){ //form cancelled
@@ -59,7 +60,7 @@ if ($sessionForm->is_cancelled()){ //form cancelled
 }else if( $data ){ // when form is submitted  
 	$sessionArr=[];
 	$sessionArr['id']= $data->sessionId;
-	$sessionArr['userid']= $USER->id;
+	$sessionArr['userid']= $data->sesUserID;
 	$sessionArr['courseid']= $data->courseid;
 	$sessionArr['teleconf_title']= $data->session_title; 
     $sessionArr['teleconf_url']= $data->link;
