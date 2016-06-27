@@ -48,8 +48,9 @@ $get_rec= get_recorded_session_info_by_id($recordedSessionId);
 $sesTitle= $get_rec->recorded_teleconf_title;
 $sesUrl= $get_rec->recorded_teleconf_url;
 $sesId= $get_rec->id;
+$sesUserId=$get_rec->userid;
 
-$recordedSessionForm = new teleconf_delete_recorded_session(NULL, array('sesTitle'=>$sesTitle,'sesUrl'=>$sesUrl,'sesId'=>$sesId));
+$recordedSessionForm = new teleconf_delete_recorded_session(NULL, array('sesTitle'=>$sesTitle,'sesUrl'=>$sesUrl,'sesId'=>$sesId,'sesUserId'=>$sesUserId));
 $data = $recordedSessionForm->get_data(); // form submitted
 
 
@@ -58,7 +59,7 @@ if ($recordedSessionForm->is_cancelled()){ //form cancelled
 }else if( $data ){ // when form is submitted  
 	$sessionArr=[];
 	$sessionArr['id']= $data->recordedSessionId;
-	$sessionArr['userid']= $USER->id;
+	$sessionArr['userid']= $data->userId;
 	$sessionArr['courseid']= $data->courseid;
 	$sessionArr['recorded_teleconf_title']= $data->session_title; 
     $sessionArr['recorded_teleconf_url']= $data->link;
